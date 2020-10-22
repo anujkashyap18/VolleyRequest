@@ -21,6 +21,10 @@ public class HomeWork {
 		return id;
 	}
 	
+	public HomeWork ( String due_date ) {
+		this.due_date = due_date;
+	}
+	
 	public String getDescription ( ) {
 		return description;
 	}

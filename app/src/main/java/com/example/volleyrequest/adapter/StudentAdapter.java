@@ -1,4 +1,4 @@
-package com.example.volleyrequest;
+package com.example.volleyrequest.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,6 +8,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.volleyrequest.HomeWork;
+import com.example.volleyrequest.R;
 
 import java.util.List;
 
@@ -48,7 +51,7 @@ public class StudentAdapter extends RecyclerView.Adapter < StudentAdapter.Studen
 	
 	@Override
 	public int getItemCount ( ) {
-		return homeWork.size ();
+		return homeWork.size ( );
 	}
 	
 	public class StudentHolder extends RecyclerView.ViewHolder {
