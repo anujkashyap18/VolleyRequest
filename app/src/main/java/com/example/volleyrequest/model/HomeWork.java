@@ -1,10 +1,14 @@
-package com.example.volleyrequest;
+package com.example.volleyrequest.model;
+
+import org.json.JSONArray;
 
 public class HomeWork {
 	
 	String id, description, subject, due_date, repeat, priority, additional_detail, type, created, modified;
+	JSONArray teacherArray;
 	
-	public HomeWork ( String id , String description , String subject , String due_date , String repeat , String priority , String additional_detail , String type , String created , String modified ) {
+	public HomeWork ( String id , String description , String subject , String due_date , String repeat , String priority ,
+					  String additional_detail , String type , String created , String modified , JSONArray teacherArray ) {
 		this.id = id;
 		this.description = description;
 		this.subject = subject;
@@ -15,14 +19,19 @@ public class HomeWork {
 		this.type = type;
 		this.created = created;
 		this.modified = modified;
-	}
-	
-	public String getId ( ) {
-		return id;
+		this.teacherArray = teacherArray;
 	}
 	
 	public HomeWork ( String due_date ) {
 		this.due_date = due_date;
+	}
+	
+	public JSONArray getTeacherArray ( ) {
+		return teacherArray;
+	}
+	
+	public String getId ( ) {
+		return id;
 	}
 	
 	public String getDescription ( ) {

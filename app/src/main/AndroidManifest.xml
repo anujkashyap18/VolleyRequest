@@ -11,9 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DateActivity"></activity>
-        <activity android:name=".ShowActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".view.DateActivity"></activity>
+        <activity android:name=".view.ShowActivity" />
+        <activity android:name=".view.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -3,16 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="8dp"
-    android:background="@color/colorPrimaryDark">
+    android:layout_height="match_parent"
+    android:layout_marginTop="8dp">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_margin="16dp"
         android:background="@drawable/cardview"
         android:orientation="vertical"
-        android:layout_margin="16dp"
+        android:weightSum="10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -20,8 +20,11 @@
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
+            android:layout_height="0dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_weight="1"
             android:weightSum="1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -29,22 +32,20 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
+                style="@style/bodyText"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="0.3"
-                android:text="Id"
-                android:fontFamily="sans-serif"
-                android:textStyle="bold"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="20sp" />
+                android:gravity="center_vertical"
+                android:text="Id" />
 
             <TextView
                 android:id="@+id/tv_id"
+                style="@style/bodyText"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="0.7"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="20sp" />
+                android:gravity="center_vertical" />
         </LinearLayout>
 
         <View
@@ -57,27 +58,27 @@
         <LinearLayout
             android:id="@+id/linearLayout1"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:weightSum="1"
+            android:layout_height="0dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_weight="1"
             android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-            tools:layout_editor_absoluteX="16dp">
+            android:weightSum="1"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                style="@style/bodyText"
                 android:layout_weight="0.3"
-                android:text="Description"
-                android:fontFamily="sans-serif"
-                android:textStyle="bold"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="20sp" />
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="Description" />
 
             <TextView
                 android:id="@+id/tv_desc"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="0.7"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="20sp" />
@@ -93,25 +94,27 @@
         <LinearLayout
             android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
+            android:layout_height="0dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
             android:weightSum="1"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout1">
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                style="@style/bodyText"
                 android:layout_weight="0.3"
-                android:text="Subject"
-                android:fontFamily="sans-serif"
-                android:textStyle="bold"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="20sp" />
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="Subject" />
 
             <TextView
                 android:id="@+id/tv_subject"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="0.7"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="20sp" />
@@ -127,25 +130,27 @@
         <LinearLayout
             android:id="@+id/linearLayout3"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
+            android:layout_height="0dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
             android:weightSum="1"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                style="@style/bodyText"
                 android:layout_weight="0.3"
                 android:text="Due date"
-                android:fontFamily="sans-serif"
-                android:textStyle="bold"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="20sp" />
+                android:layout_height="match_parent"
+                android:gravity="center_vertical" />
 
             <TextView
                 android:id="@+id/tv_due"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="0.7"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="20sp" />
@@ -159,81 +164,29 @@
             android:background="@color/colorPrimary" />
 
         <LinearLayout
-            android:id="@+id/linearLayout4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:weightSum="1"
-            android:visibility="gone"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.3"
-                android:text="repeat"
-                android:fontFamily="sans-serif"
-                android:textStyle="bold"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/tv_repeat"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.7"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="20sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/linearLayout5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:weightSum="1"
-            android:visibility="gone"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.3"
-                android:text="Priority"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/tv_priority"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.7"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="20sp" />
-        </LinearLayout>
-
-        <LinearLayout
             android:id="@+id/linearLayout6"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
+            android:layout_height="0dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
             android:weightSum="1"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout5">
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                style="@style/bodyText"
                 android:layout_weight="0.3"
                 android:text="Additional Detail"
-                android:fontFamily="sans-serif"
-                android:textStyle="bold"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="20sp" />
+                android:layout_height="match_parent"
+                android:gravity="center_vertical" />
 
             <TextView
                 android:id="@+id/tv_additional"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="0.7"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="20sp" />
@@ -249,80 +202,53 @@
         <LinearLayout
             android:id="@+id/linearLayout7"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
+            android:layout_height="0dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
             android:weightSum="1"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout6">
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                style="@style/bodyText"
                 android:layout_weight="0.3"
                 android:text="Type"
-                android:fontFamily="sans-serif"
-                android:textStyle="bold"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="20sp" />
+                android:layout_height="match_parent"
+                android:gravity="center_vertical" />
 
             <TextView
                 android:id="@+id/tv_type"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="0.7"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="20sp" />
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/linearLayout8"
+        <View
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:weightSum="1"
-            android:visibility="gone"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout7">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.3"
-                android:text="Created"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="20sp" />
-
-            <TextView
-                android:id="@+id/tv_created"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.7"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="20sp" />
-        </LinearLayout>
+            android:layout_height="2dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:background="@color/colorPrimary" />
 
         <LinearLayout
-            android:id="@+id/linearLayout9"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:weightSum="1"
-            android:visibility="gone"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout8">
+            android:layout_height="0dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_weight="4">
 
-            <TextView
-                android:layout_width="0dp"
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/hw_img"
+                android:layout_width="match_parent"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.3"
-                android:text="Modiified"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="20sp" />
+                tools:listitem="@layout/custom_teacher_homework" />
 
-            <TextView
-                android:id="@+id/tv_modified"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.7"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="20sp" />
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

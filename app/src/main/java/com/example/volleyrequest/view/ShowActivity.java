@@ -1,4 +1,4 @@
-package com.example.volleyrequest;
+package com.example.volleyrequest.view;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -14,7 +14,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.volleyrequest.adapter.StudentAdapter;
+import com.example.volleyrequest.R;
+import com.example.volleyrequest.controller.StudentAdapter;
+import com.example.volleyrequest.model.HomeWork;
+import com.example.volleyrequest.model.Teacher;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -25,14 +28,15 @@ import java.util.List;
 
 public class ShowActivity extends AppCompatActivity {
 	
-	RecyclerView recyclerView;
+	RecyclerView recyclerView, teacherRecyclerView;
 	StudentAdapter studentAdapter;
 	List < HomeWork > data = new ArrayList <> ( );
+	List < Teacher > teacherList = new ArrayList <> ( );
 	
 	String url = "https://app.skooledge.com/api/get/homeworklist?school_id=4&batch_id=60";
 	RequestQueue requestQueue;
 	String id, description, subject, due_date, repeat, priority, additional_detail, type, created, modified;
-	String status, result, list, dueDate;
+	String status, dueDate;
 	
 	@Override
 	protected void onCreate ( Bundle savedInstanceState ) {
@@ -40,11 +44,12 @@ public class ShowActivity extends AppCompatActivity {
 		setContentView ( R.layout.activity_show );
 		
 		recyclerView = findViewById ( R.id.recyclerView );
-		recyclerView.setLayoutManager ( new LinearLayoutManager ( this ) );
+		teacherRecyclerView = findViewById ( R.id.teacher_recView );
+		recyclerView.setLayoutManager ( new LinearLayoutManager ( this , RecyclerView.HORIZONTAL , false ) );
+		teacherRecyclerView.setLayoutManager ( new LinearLayoutManager ( this , RecyclerView.HORIZONTAL , false ) );
 		requestQueue = Volley.newRequestQueue ( this );
 		
 		dueDate = getIntent ( ).getStringExtra ( "due" );
-		//Toast.makeText ( ShowActivity.this , "DUE DATE : " + due_date, Toast.LENGTH_SHORT ).show ( );
 		
 		StringRequest stringRequest = new StringRequest ( Request.Method.POST , url , new Response.Listener < String > ( ) {
 			@Override
@@ -57,11 +62,12 @@ public class ShowActivity extends AppCompatActivity {
 						
 						JSONObject results = object.getJSONObject ( "results" );
 						JSONArray list = results.getJSONArray ( "list" );
-//
 						for ( int i = 0 ; i < list.length ( ) ; i++ ) {
 							
 							JSONObject obj = list.getJSONObject ( i );
 							JSONObject schoolHomeWork = obj.getJSONObject ( "SchoolHomework" );
+							JSONArray teacherObject = obj.getJSONArray ( "Teacher_Attachment" );
+							
 							
 							id = schoolHomeWork.getString ( "id" );
 							description = schoolHomeWork.getString ( "description" );
@@ -75,11 +81,12 @@ public class ShowActivity extends AppCompatActivity {
 							modified = schoolHomeWork.getString ( "modified" );
 							if ( due_date.equals ( dueDate ) ) {
 								data.add ( new HomeWork ( id , description , subject , due_date , repeat ,
-										priority , additional_detail , type , created , modified ) );
+										priority , additional_detail , type , created , modified , teacherObject ) );
 							}
 						}
 						studentAdapter = new StudentAdapter ( ShowActivity.this , data );
 						recyclerView.setAdapter ( studentAdapter );
+						
 					}
 				}
 				catch ( JSONException e ) {

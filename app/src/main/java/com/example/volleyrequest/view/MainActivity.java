@@ -1,15 +1,17 @@
-package com.example.volleyrequest;
+package com.example.volleyrequest.view;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
+import android.os.Handler;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.volleyrequest.R;
+
 public class MainActivity extends AppCompatActivity {
 	
-	Button show;
+	ImageView show;
 	
 	@Override
 	protected void onCreate ( Bundle savedInstanceState ) {
@@ -18,11 +20,15 @@ public class MainActivity extends AppCompatActivity {
 		
 		show = findViewById ( R.id.show );
 		
-		show.setOnClickListener ( new View.OnClickListener ( ) {
+		show.animate ( ).alpha ( 1f ).setDuration ( 3000 );
+		new Handler ( ).postDelayed ( new Runnable ( ) {
 			@Override
-			public void onClick ( View view ) {
+			public void run ( ) {
+				
 				startActivity ( new Intent ( MainActivity.this , DateActivity.class ) );
+				finish ( );
 			}
-		} );
+		} , 5000 );
+		
 	}
 }

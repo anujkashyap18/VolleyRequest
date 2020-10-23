@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
 
     android:background="@color/colorPrimaryDark"
-    tools:context=".DateActivity">
+    tools:context=".view.DateActivity">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/date_recyclerView"

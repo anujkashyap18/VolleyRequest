@@ -1,4 +1,4 @@
-package com.example.volleyrequest.adapter;
+package com.example.volleyrequest.controller;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,9 +11,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.volleyrequest.HomeWork;
 import com.example.volleyrequest.R;
-import com.example.volleyrequest.ShowActivity;
+import com.example.volleyrequest.model.HomeWork;
+import com.example.volleyrequest.view.ShowActivity;
 
 import java.util.List;
 

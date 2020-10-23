@@ -1,4 +1,4 @@
-package com.example.volleyrequest;
+package com.example.volleyrequest.view;
 
 import android.os.Bundle;
 
@@ -12,7 +12,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.volleyrequest.adapter.DateAdapter;
+import com.example.volleyrequest.R;
+import com.example.volleyrequest.controller.DateAdapter;
+import com.example.volleyrequest.model.HomeWork;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -44,7 +46,6 @@ public class DateActivity extends AppCompatActivity {
 		StringRequest stringRequest = new StringRequest ( Request.Method.POST , url , new Response.Listener < String > ( ) {
 			@Override
 			public void onResponse ( String response ) {
-				
 				
 				try {
 					JSONObject object = new JSONObject ( response );
