@@ -29,10 +29,9 @@ public class DateActivity extends AppCompatActivity {
 	DateAdapter dateAdapter;
 	List < HomeWork > dateFilter = new ArrayList <> ( );
 	RequestQueue requestQueue;
-	
 	String url = "https://app.skooledge.com/api/get/homeworklist?school_id=4&batch_id=60";
 	String status;
-	String id, description, subject, due_date, repeat, priority, additional_detail, type, created, modified;
+	String due_date;
 	
 	@Override
 	protected void onCreate ( Bundle savedInstanceState ) {
@@ -62,7 +61,6 @@ public class DateActivity extends AppCompatActivity {
 							JSONObject schoolHomeWork = jsonObject.getJSONObject ( "SchoolHomework" );
 							due_date = schoolHomeWork.getString ( "due_date" );
 							dateFilter.add ( new HomeWork ( due_date ) );
-							
 							
 						}
 						

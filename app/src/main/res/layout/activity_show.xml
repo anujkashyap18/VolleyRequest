@@ -10,12 +10,12 @@
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/bodyText"
         android:layout_margin="8dp"
-        android:gravity="center_horizontal"
+        android:layout_height="40dp"
         android:text="School Homework"
-        android:textColor="@color/colorAccent"
-        android:textSize="20sp"
+        android:gravity="center"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

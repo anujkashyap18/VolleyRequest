@@ -6,7 +6,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.PagerSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.SnapHelper;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -45,10 +47,12 @@ public class ShowActivity extends AppCompatActivity {
 		
 		recyclerView = findViewById ( R.id.recyclerView );
 		teacherRecyclerView = findViewById ( R.id.teacher_recView );
+		
 		recyclerView.setLayoutManager ( new LinearLayoutManager ( this , RecyclerView.HORIZONTAL , false ) );
 		teacherRecyclerView.setLayoutManager ( new LinearLayoutManager ( this , RecyclerView.HORIZONTAL , false ) );
+		SnapHelper helper = new PagerSnapHelper ( );
 		requestQueue = Volley.newRequestQueue ( this );
-		
+		helper.attachToRecyclerView ( recyclerView );
 		dueDate = getIntent ( ).getStringExtra ( "due" );
 		
 		StringRequest stringRequest = new StringRequest ( Request.Method.POST , url , new Response.Listener < String > ( ) {

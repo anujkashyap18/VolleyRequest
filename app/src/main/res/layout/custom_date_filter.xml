@@ -23,10 +23,7 @@
             android:layout_gravity="center"
             android:layout_margin="8dp"
             android:text="2020-08-06"
-            android:fontFamily="sans-serif"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            style="@style/bodyText" />
 
     </LinearLayout>
 

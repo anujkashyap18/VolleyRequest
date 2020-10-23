@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -13,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.volleyrequest.R;
 import com.example.volleyrequest.model.HomeWork;
 import com.example.volleyrequest.model.Teacher;
+import com.google.android.material.textfield.TextInputEditText;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -52,18 +52,27 @@ public class StudentAdapter extends RecyclerView.Adapter < StudentAdapter.Studen
 		holder.type.setText ( homeWork.get ( position ).getType ( ) );
 		holder.recyclerView.setLayoutManager ( new LinearLayoutManager ( context ) );
 		
+		
 		JSONArray teachArray = homeWork.get ( position ).getTeacherArray ( );
-		for ( int i = 0 ; i < teachArray.length ( ) ; i++ ) {
-			try {
-				JSONObject obj = teachArray.getJSONObject ( i );
-				
-				teacher_att.add ( new Teacher ( obj.getString ( "id" ) , obj.getString ( "homework_id" ) , obj.getString ( "file_path" ) ) );
-				
-			}
-			catch ( JSONException e ) {
-				e.printStackTrace ( );
+		
+		if ( teachArray.length ( ) > 0 ) {
+			for ( int i = 0 ; i < teachArray.length ( ) ; i++ ) {
+				try {
+					JSONObject obj = teachArray.getJSONObject ( i );
+					
+					teacher_att.add ( new Teacher ( obj.getString ( "id" ) , obj.getString ( "homework_id" ) , obj.getString ( "file_path" ) ) );
+					
+				}
+				catch ( JSONException e ) {
+					e.printStackTrace ( );
+				}
 			}
 		}
+		
+		else {
+			holder.recyclerView.setVisibility ( View.GONE );
+		}
+		
 		
 		holder.recyclerView.setAdapter ( new TeacherAdapter ( context , teacher_att ) );
 	}
@@ -75,7 +84,7 @@ public class StudentAdapter extends RecyclerView.Adapter < StudentAdapter.Studen
 	
 	public class StudentHolder extends RecyclerView.ViewHolder {
 		
-		TextView id, description, subject, dueDate, additionalDetail, type;
+		TextInputEditText id, description, subject, dueDate, additionalDetail, type;
 		RecyclerView recyclerView;
 		
 		public StudentHolder ( @NonNull View itemView ) {
