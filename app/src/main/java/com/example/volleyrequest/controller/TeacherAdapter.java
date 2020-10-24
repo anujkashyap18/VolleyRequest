@@ -37,7 +37,56 @@ public class TeacherAdapter extends RecyclerView.Adapter < TeacherAdapter.Teache
 	@Override
 	public void onBindViewHolder ( @NonNull TeacherHolder holder , int position ) {
 		
-		Picasso.get ( ).load ( teachers.get ( position ).getFile_path ( ) ).into ( holder.filePath );
+		if ( teachers.get ( position ).getFile_type ( ).equals ( "png" ) ) {
+			Picasso.get ( ).load ( teachers.get ( position ).getFile_path ( ) ).into ( holder.filePath );
+			holder.filePath.setVisibility ( View.VISIBLE );
+			holder.document.setVisibility ( View.GONE );
+			holder.pdf.setVisibility ( View.GONE );
+			holder.xls.setVisibility ( View.GONE );
+			holder.ppt.setVisibility ( View.GONE );
+			holder.txt.setVisibility ( View.GONE );
+		}
+		else if ( teachers.get ( position ).getFile_type ( ).equals ( "doc" ) ) {
+			holder.filePath.setVisibility ( View.GONE );
+			holder.document.setVisibility ( View.VISIBLE );
+			holder.pdf.setVisibility ( View.GONE );
+			holder.xls.setVisibility ( View.GONE );
+			holder.ppt.setVisibility ( View.GONE );
+			holder.txt.setVisibility ( View.GONE );
+		}
+		else if ( teachers.get ( position ).getFile_type ( ).equals ( "pdf" ) ) {
+			holder.filePath.setVisibility ( View.GONE );
+			holder.document.setVisibility ( View.GONE );
+			holder.pdf.setVisibility ( View.VISIBLE );
+			holder.xls.setVisibility ( View.GONE );
+			holder.ppt.setVisibility ( View.GONE );
+			holder.txt.setVisibility ( View.GONE );
+		}
+		else if ( teachers.get ( position ).getFile_type ( ).equals ( "xls" ) ) {
+			holder.filePath.setVisibility ( View.GONE );
+			holder.document.setVisibility ( View.GONE );
+			holder.pdf.setVisibility ( View.GONE );
+			holder.xls.setVisibility ( View.VISIBLE );
+			holder.ppt.setVisibility ( View.GONE );
+			holder.txt.setVisibility ( View.GONE );
+		}
+		else if ( teachers.get ( position ).getFile_type ( ).equals ( "ppt" ) ) {
+			holder.filePath.setVisibility ( View.GONE );
+			holder.document.setVisibility ( View.GONE );
+			holder.pdf.setVisibility ( View.GONE );
+			holder.xls.setVisibility ( View.GONE );
+			holder.ppt.setVisibility ( View.VISIBLE );
+			holder.txt.setVisibility ( View.GONE );
+		}
+		else {
+			holder.filePath.setVisibility ( View.GONE );
+			holder.document.setVisibility ( View.GONE );
+			holder.pdf.setVisibility ( View.GONE );
+			holder.xls.setVisibility ( View.GONE );
+			holder.ppt.setVisibility ( View.GONE );
+			holder.txt.setVisibility ( View.GONE );
+			holder.txt.setVisibility ( View.VISIBLE );
+		}
 	}
 	
 	
@@ -48,13 +97,17 @@ public class TeacherAdapter extends RecyclerView.Adapter < TeacherAdapter.Teache
 	
 	public class TeacherHolder extends RecyclerView.ViewHolder {
 		
-		ImageView filePath, document;
+		ImageView filePath, document, pdf, xls, ppt, txt;
 		
 		
 		public TeacherHolder ( @NonNull View itemView ) {
 			super ( itemView );
 			filePath = itemView.findViewById ( R.id.filepath );
 			document = itemView.findViewById ( R.id.doc );
+			pdf = itemView.findViewById ( R.id.pdf );
+			xls = itemView.findViewById ( R.id.xls );
+			ppt = itemView.findViewById ( R.id.ppt );
+			txt = itemView.findViewById ( R.id.txt );
 			
 		}
 	}

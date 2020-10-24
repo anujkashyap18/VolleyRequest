@@ -59,7 +59,8 @@ public class StudentAdapter extends RecyclerView.Adapter < StudentAdapter.Studen
 		for ( int i = 0 ; i < teachArray.length ( ) ; i++ ) {
 			try {
 				JSONObject obj = teachArray.getJSONObject ( i );
-				teacher_att.add ( new Teacher ( obj.getString ( "id" ) , obj.getString ( "homework_id" ) , obj.getString ( "file_path" ) ) );
+				teacher_att.add ( new Teacher ( obj.getString ( "id" ) , obj.getString ( "homework_id" ) , obj.getString ( "file_path" )
+						, obj.getString ( "file_type" ) ) );
 			}
 			catch ( JSONException e ) {
 				e.printStackTrace ( );
@@ -71,6 +72,7 @@ public class StudentAdapter extends RecyclerView.Adapter < StudentAdapter.Studen
 			holder.attachment.setVisibility ( View.VISIBLE );
 			holder.recyclerView.setVisibility ( View.GONE );
 		}
+		
 		else {
 			holder.attachment.setVisibility ( View.GONE );
 			holder.recyclerView.setAdapter ( new TeacherAdapter ( context , teacher_att ) );
