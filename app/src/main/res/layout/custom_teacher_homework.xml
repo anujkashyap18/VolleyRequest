@@ -23,6 +23,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
+            android:orientation="vertical"
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
@@ -30,10 +31,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="360dp"
                 android:layout_margin="16dp"
+                android:visibility="gone"
                 android:scaleType="centerCrop"
                 android:src="@drawable/ic_baseline_school_24" />
 
+            <ImageView
+                android:id="@+id/doc"
+                android:layout_width="match_parent"
+                android:layout_height="360dp"
+                android:layout_margin="16dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_baseline_file_copy_24"
+                android:visibility="gone" />
+
+
         </LinearLayout>
+
 
     </LinearLayout>
 

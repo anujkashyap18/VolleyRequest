@@ -30,7 +30,7 @@ import java.util.List;
 
 public class ShowActivity extends AppCompatActivity {
 	
-	RecyclerView recyclerView, teacherRecyclerView;
+	RecyclerView recyclerView;
 	StudentAdapter studentAdapter;
 	List < HomeWork > data = new ArrayList <> ( );
 	List < Teacher > teacherList = new ArrayList <> ( );
@@ -46,10 +46,8 @@ public class ShowActivity extends AppCompatActivity {
 		setContentView ( R.layout.activity_show );
 		
 		recyclerView = findViewById ( R.id.recyclerView );
-		teacherRecyclerView = findViewById ( R.id.teacher_recView );
 		
 		recyclerView.setLayoutManager ( new LinearLayoutManager ( this , RecyclerView.HORIZONTAL , false ) );
-		teacherRecyclerView.setLayoutManager ( new LinearLayoutManager ( this , RecyclerView.HORIZONTAL , false ) );
 		SnapHelper helper = new PagerSnapHelper ( );
 		requestQueue = Volley.newRequestQueue ( this );
 		helper.attachToRecyclerView ( recyclerView );

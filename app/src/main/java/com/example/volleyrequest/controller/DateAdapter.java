@@ -2,6 +2,9 @@ package com.example.volleyrequest.controller;
 
 import android.content.Context;
 import android.content.Intent;
+import android.icu.text.SimpleDateFormat;
+import android.icu.util.Calendar;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,13 +12,17 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.volleyrequest.R;
 import com.example.volleyrequest.model.HomeWork;
 import com.example.volleyrequest.view.ShowActivity;
 
+import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 public class DateAdapter extends RecyclerView.Adapter < DateAdapter.DateHolder > {
 	
@@ -28,6 +35,15 @@ public class DateAdapter extends RecyclerView.Adapter < DateAdapter.DateHolder >
 		
 	}
 	
+	@RequiresApi ( api = Build.VERSION_CODES.N )
+	private static String getMonth ( String date ) throws ParseException {
+		Date d = new SimpleDateFormat ( "yyyy-MM-dd" , Locale.ENGLISH ).parse ( date );
+		Calendar cal = Calendar.getInstance ( );
+		cal.setTime ( d );
+		String monthName = new SimpleDateFormat ( "dd-MMM-yyyy" ).format ( cal.getTime ( ) );
+		return monthName;
+	}
+	
 	@NonNull
 	@Override
 	public DateHolder onCreateViewHolder ( @NonNull ViewGroup parent , int viewType ) {
@@ -36,10 +52,20 @@ public class DateAdapter extends RecyclerView.Adapter < DateAdapter.DateHolder >
 		return new DateHolder ( view );
 	}
 	
+	@RequiresApi ( api = Build.VERSION_CODES.O )
 	@Override
 	public void onBindViewHolder ( @NonNull final DateHolder holder , final int position ) {
+
+
+//		Calendar calendar = Calendar.getInstance ( );
+//		String currentDate = DateFormat.getDateInstance ( DateFormat.FULL ).format ( calendar.getTime ( ) );
+		try {
+			holder.dateFilter.setText ( getMonth ( dateList.get ( position ).getDue_date ( ) ) );
+		}
+		catch ( ParseException e ) {
+			e.printStackTrace ( );
+		}
 		
-		holder.dateFilter.setText ( dateList.get ( position ).getDue_date ( ) );
 		holder.dateLayout.setOnClickListener ( new View.OnClickListener ( ) {
 			@Override
 			public void onClick ( View view ) {

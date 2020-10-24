@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -52,29 +54,28 @@ public class StudentAdapter extends RecyclerView.Adapter < StudentAdapter.Studen
 		holder.type.setText ( homeWork.get ( position ).getType ( ) );
 		holder.recyclerView.setLayoutManager ( new LinearLayoutManager ( context ) );
 		
-		
 		JSONArray teachArray = homeWork.get ( position ).getTeacherArray ( );
 		
-		if ( teachArray.length ( ) > 0 ) {
-			for ( int i = 0 ; i < teachArray.length ( ) ; i++ ) {
-				try {
-					JSONObject obj = teachArray.getJSONObject ( i );
-					
-					teacher_att.add ( new Teacher ( obj.getString ( "id" ) , obj.getString ( "homework_id" ) , obj.getString ( "file_path" ) ) );
-					
-				}
-				catch ( JSONException e ) {
-					e.printStackTrace ( );
-				}
+		for ( int i = 0 ; i < teachArray.length ( ) ; i++ ) {
+			try {
+				JSONObject obj = teachArray.getJSONObject ( i );
+				teacher_att.add ( new Teacher ( obj.getString ( "id" ) , obj.getString ( "homework_id" ) , obj.getString ( "file_path" ) ) );
+			}
+			catch ( JSONException e ) {
+				e.printStackTrace ( );
 			}
 		}
 		
-		else {
+		if ( teachArray.length ( ) <= 0 ) {
+			Toast.makeText ( context , "no data found" , Toast.LENGTH_SHORT ).show ( );
+			holder.attachment.setVisibility ( View.VISIBLE );
 			holder.recyclerView.setVisibility ( View.GONE );
 		}
-		
-		
-		holder.recyclerView.setAdapter ( new TeacherAdapter ( context , teacher_att ) );
+		else {
+			holder.attachment.setVisibility ( View.GONE );
+			holder.recyclerView.setAdapter ( new TeacherAdapter ( context , teacher_att ) );
+			holder.recyclerView.setVisibility ( View.VISIBLE );
+		}
 	}
 	
 	@Override
@@ -82,10 +83,11 @@ public class StudentAdapter extends RecyclerView.Adapter < StudentAdapter.Studen
 		return homeWork.size ( );
 	}
 	
-	public class StudentHolder extends RecyclerView.ViewHolder {
+	public static class StudentHolder extends RecyclerView.ViewHolder {
 		
 		TextInputEditText id, description, subject, dueDate, additionalDetail, type;
 		RecyclerView recyclerView;
+		TextView attachment;
 		
 		public StudentHolder ( @NonNull View itemView ) {
 			super ( itemView );
@@ -96,6 +98,7 @@ public class StudentAdapter extends RecyclerView.Adapter < StudentAdapter.Studen
 			additionalDetail = itemView.findViewById ( R.id.tv_additional );
 			type = itemView.findViewById ( R.id.tv_type );
 			recyclerView = itemView.findViewById ( R.id.hw_img );
+			attachment = itemView.findViewById ( R.id.tv_attach );
 		}
 	}
 }

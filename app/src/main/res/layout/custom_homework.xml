@@ -16,7 +16,7 @@
         android:background="@drawable/cardview"
         android:orientation="vertical"
         android:padding="16dp"
-        android:weightSum="10"
+        android:weightSum="1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -40,7 +40,6 @@
                 android:textColor="@color/colorAccent" />
         </com.google.android.material.textfield.TextInputLayout>
 
-
         <com.google.android.material.textfield.TextInputLayout
             style="@style/textBoxOutline"
             android:layout_width="match_parent"
@@ -58,7 +57,6 @@
                 android:paddingStart="0dp"
                 android:textColor="@color/colorAccent" />
         </com.google.android.material.textfield.TextInputLayout>
-
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/textBoxOutline"
@@ -78,7 +76,6 @@
                 android:textColor="@color/colorAccent" />
         </com.google.android.material.textfield.TextInputLayout>
 
-
         <com.google.android.material.textfield.TextInputLayout
             style="@style/textBoxOutline"
             android:layout_width="match_parent"
@@ -97,7 +94,6 @@
                 android:textColor="@color/colorAccent" />
         </com.google.android.material.textfield.TextInputLayout>
 
-
         <com.google.android.material.textfield.TextInputLayout
             style="@style/textBoxOutline"
             android:layout_width="match_parent"
@@ -115,7 +111,6 @@
                 android:paddingStart="0dp"
                 android:textColor="@color/colorAccent" />
         </com.google.android.material.textfield.TextInputLayout>
-
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/textBoxOutline"
@@ -137,16 +132,31 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/hw_img"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="visible"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintTop_toTopOf="parent"
                 tools:listitem="@layout/custom_teacher_homework" />
 
+            <TextView
+                android:id="@+id/tv_attach"
+                style="@style/bodyText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="No Attachment Found"
+                android:textSize="25sp"
+                android:visibility="gone" />
+
         </LinearLayout>
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

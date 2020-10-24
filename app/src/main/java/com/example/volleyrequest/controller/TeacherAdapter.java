@@ -38,8 +38,8 @@ public class TeacherAdapter extends RecyclerView.Adapter < TeacherAdapter.Teache
 	public void onBindViewHolder ( @NonNull TeacherHolder holder , int position ) {
 		
 		Picasso.get ( ).load ( teachers.get ( position ).getFile_path ( ) ).into ( holder.filePath );
-		
 	}
+	
 	
 	@Override
 	public int getItemCount ( ) {
@@ -48,11 +48,14 @@ public class TeacherAdapter extends RecyclerView.Adapter < TeacherAdapter.Teache
 	
 	public class TeacherHolder extends RecyclerView.ViewHolder {
 		
-		ImageView filePath;
+		ImageView filePath, document;
+		
 		
 		public TeacherHolder ( @NonNull View itemView ) {
 			super ( itemView );
 			filePath = itemView.findViewById ( R.id.filepath );
+			document = itemView.findViewById ( R.id.doc );
+			
 		}
 	}
 }
